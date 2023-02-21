@@ -17,19 +17,21 @@ with open(budget_csv, 'r') as csvfile:
 
     # Split the data on commas
     csvreader = csv.reader(csvfile, delimiter=',')
-    header = next(csvreader) #skip header
-
-
+    #skip header
+    header = next(csvreader) 
     # Loop through the data
     for row in csvreader:
 
-        
+        #find total number of months
         total_months = total_months + 1
+        # net total amount of profit/loss
         total_pl = round(total_pl + float(row[1]))
        
+       #calculate the rolling changes starting from row 2
         if total_months != 1:
             average_change.append( float(row[1])- prev_pl )
-       
+            
+       #greatest increase and decrease in profit
         if(float(row[1]) - prev_pl > greatest_inc_profit):
             greatest_inc_profit = round(float(row[1]) - prev_pl)
             greatest_inc_month = row[0]
@@ -38,9 +40,11 @@ with open(budget_csv, 'r') as csvfile:
             greatest_dec_month = row[0]
 
         prev_pl = float(row[1])
-       
+
+#calculate average change over period by deviding by length of average_change list   
 total_avg_change = round(sum(average_change)/len(average_change) ,2)
 
+# print to terminal
 print("Financial Analysis")
 print("--------------------")
 print(f"Total Months: {total_months}")
