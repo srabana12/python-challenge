@@ -12,7 +12,7 @@ Reading through budget_data.csv with "Date" and "Profit/Losses" data to find:
 
 PyPoll
 --------
-Reading through election_data with "Voter ID", "County", and "Candidate" information to find:
+Reading through election_data.csv with "Voter ID", "County", and "Candidate" information to find:
 
 - The total number of votes cast
 - A complete list of candidates who received votes
